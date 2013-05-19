@@ -278,6 +278,7 @@ public abstract class VContentProvider extends ContentProvider {
 			for (ContentValues value : values) {
 				if (insert(uri, value) != null)
 					succeedCount++;
+                db.yieldIfContendedSafely();
 			}
 			db.setTransactionSuccessful();
 		} finally {
